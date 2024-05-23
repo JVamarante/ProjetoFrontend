@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxo - Mensagens</title>
+    <link rel="stylesheet" href="css/default.css" />
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="title">
+                <img src="images/barco1.png" alt="ícone de barco" />
+                <div class="headtitle">
+                    <h1>Luxo</h1>
+                    <h2>Mensagens Recebidas</h2>
+                </div>
+            </div>
+        </header>
+        <main>
+            <table id="tabelaMensagens">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Mensagem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As mensagens serão inseridas aqui -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <footer>
+        <p>© 2023 por Luxo aluguel de iates</p>
+    </footer>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        $(document).ready(function() {
+            var tbody = $('#tabelaMensagens tbody');
+
+            // Obter mensagens e adicionar à tabela
+            var mensagens = obterMensagens();
+
+            mensagens.forEach(function(mensagem) {
+                var tr = $('<tr id="mensagem_' + mensagem.id + '"></tr>');
+                tr.append('<td>' + mensagem.nome + '</td>');
+                tr.append('<td>' + mensagem.email + '</td>');
+                tr.append('<td>' + mensagem.mensagem + '</td>');
+                tbody.append(tr);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxo - Admin</title>
+    <link rel="stylesheet" href="css/default.css" />
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="title">
+                <img src="images/barco1.png" alt="ícone de barco" />
+                <div class="headtitle">
+                    <h1>Luxo</h1>
+                    <h2>Administração</h2>
+                </div>
+            </div>
+        </header>
+        <main>
+            <form id="loginForm">
+                <div class="entry">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" />
+                </div>
+                <div class="entry">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" />
+                </div>
+                <div class="buttons">
+                    <button type="button" id="btnLogin" class="button">Login</button>
+                </div>
+                <div id="error" style="color: red; display: none;">E-mail e Senha inválidos</div>
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>© 2023 por Luxo aluguel de iates</p>
+    </footer>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btnLogin').click(function() {
+                var email = $('#email').val();
+                var senha = $('#senha').val();
+
+                var objLoginSenha = {
+                    email: email,
+                    senha: senha
+                };
+
+                if (validarUsuario(objLoginSenha)) {
+                    window.location.href = 'mensagens.html';
+                } else {
+                    $('#error').show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
